@@ -15,7 +15,7 @@ jobs:
 
       - name: Purge jsdelivr CDN
         run: |
-          for file in $(ls); do
-            echo "Purging $file"          
-            #curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}@main/${file}"
+          find v2rayN -type f | while read -r file; do
+            echo "Purging $file"
+            curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}@main/${file}"
           done
